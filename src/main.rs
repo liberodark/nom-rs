@@ -186,7 +186,7 @@ fn run_monitored(
 ) -> io::Result<std::process::ExitStatus> {
     let mut child = Command::new(command)
         .args(args)
-        .stdin(Stdio::null())
+        // stdin is inherited from the parent terminal.
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
         .spawn()?;
